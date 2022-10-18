@@ -1,0 +1,17 @@
+on: [push]
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
+jobs:
+  test:
+  
+    runs-on: ubuntu-latest
+    name: test testify run
+    steps:
+      - uses: testifysec/testify-run-action@main
+        name: testify run command
+        with:
+          step-name: 'test'
+          trace-enable: 'true'
+          command: 'touch test.txt'
+

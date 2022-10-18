@@ -1,0 +1,24 @@
+name: testify-run
+description: 'Creates Attesttion of CI Process'
+inputs:
+  step-name:
+    description: 'name of the step'
+    required: true
+  trace-enable:
+    description: 'Enable tracing'
+    required: false
+    default: "false"
+  attestors:
+    description: 'List of attestors to use seperated by spaces'
+    required: false
+    default: "github"
+  command:
+    description: 'Command to run'
+    required: true
+
+outputs:
+  attesttion_url:
+    description: 'The url of the attestation'
+runs:
+  using: 'node16'
+  main: 'index.js'
