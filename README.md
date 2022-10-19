@@ -2,7 +2,7 @@
 
 This action creates attestations for any command that is run. It is intended to be used in CI/CD pipelines to attest the results of the pipeline.
 
-Note: This action and the supporting infrastructure is currently in alpha and is subject to change.  There are no guarantees of backwards compatibility data security or availability.
+Note: This action and the supporting infrastructure is currently in alpha and is subject to change.  There are no guarantees of backwards compatibility data security or availability.  There is no privacy of the attestations created by this action, currently the attestations are public.
 
 ## Create a free account
 
@@ -14,8 +14,14 @@ To use this action, you must first create a free account at [https://judge.testi
 2.  Select GitHub for NodeType
 3.  Select a node group
 4.  Use `Repo` for the selector key
-5.  Enter your reposutory name for the selector value (i.e. https://github.com/testifysec/witness)
+5.  Enter your repo name for the selector value (i.e. https://github.com/testifysec/witness)
 6.  Click Submit
+
+## Bootstrap workload idenitty
+
+For now you need to use the CLI tool scribe (at the root of this repo)
+
+```./scribe --register-bin scribe --workload-name scribe --node-group dev```
 
 ## Inputs
 
@@ -36,5 +42,19 @@ jobs:
         with:
           step-name: 'test'
           trace-enable: 'true'
-          command: 'touch test.txt'
+          attestors: 'github sbom' {defualt is 'github'}
+          command: 'go build ./...'
 ```
+
+## Search for attestations
+
+You can search for attestations using Judge portal at [https://judge.testifysec.io](https://judge.testifysec.io).
+
+- Query for the project name
+`https://github.com/testifysec/witness`
+
+- Query for the artifact hash
+`sha256sum {pipeline artifact} ==> enter hash without the algorithm prefix in the search box`
+
+- Get Releated Attestations
+`Click on the backref button on the search page`
