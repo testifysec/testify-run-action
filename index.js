@@ -29,12 +29,21 @@ async function run() {
   const binary = "testify";
   const mainScript = `${__dirname}/${binary}`;
 
+  trace = false
+
+  if (traceEnable == "true") {
+    trace = true
+  }
+
+  const traceCommand = trace ? "--trace" : "";
+
+
+
   const cmd = [
     mainScript,
     "--step-name",
     stepName,
-    "--trace",
-    traceEnable,
+    traceCommand,
     attestationArgs,
     "--",
     command,
