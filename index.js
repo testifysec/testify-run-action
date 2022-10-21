@@ -26,7 +26,7 @@ async function run() {
     attestationArgs += "--attestors " + attestors[i] + " ";
   }
 
-  const binary = "scribe";
+  const binary = "testify";
   const mainScript = `${__dirname}/${binary}`;
 
   const cmd = [
