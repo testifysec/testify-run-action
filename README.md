@@ -19,9 +19,9 @@ To use this action, you must first create a free account at [https://judge.testi
 
 ## Bootstrap workload idenitty
 
-For now you need to use the CLI tool scribe (at the root of this repo)
+For now you need to use the CLI tool `testify` (at the root of this repo)
 
-```./scribe --register-bin scribe --workload-name scribe --node-group dev```
+```./testify --register-bin testify --workload-name testify --node-group dev```
 
 ## Inputs
 
