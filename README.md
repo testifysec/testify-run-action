@@ -1,5 +1,7 @@
 # testify-run-action
 
+**Warning - this is experimental only.  This may leak secrets when tracing support is enabled.
+
 This action creates attestations for any command that is run. It is intended to be used in CI/CD pipelines to attest the results of the pipeline.
 
 Note: This action and the supporting infrastructure is currently in alpha and is subject to change.  There are no guarantees of backwards compatibility data security or availability.  There is no privacy of the attestations created by this action, currently the attestations are public.
